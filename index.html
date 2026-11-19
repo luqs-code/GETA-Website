@@ -954,3 +954,14 @@ window.addEventListener('focus',()=>{users=store.get('geta_users',[]);bookings=s
 .duration-choice.selected .ios-switch-thumb{transform:translateX(36px)}
 .duration-choice:focus-visible{outline:3px solid #8ca8cc;outline-offset:2px}
 </style>
+
+
+<style id="geta-welcome-remove-top-gutter">
+/* Remove the cream main-container padding above the welcome banner. */
+main:has(> .geta-welcome-banner){
+  padding-top:0!important;
+}
+.geta-welcome-banner{
+  margin-top:0!important;
+}
+</style>
