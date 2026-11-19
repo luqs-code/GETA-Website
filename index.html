@@ -871,6 +871,35 @@ window.addEventListener('focus',()=>{users=store.get('geta_users',[]);bookings=s
 .geta-welcome-sub{margin:14px 0 0;color:#d8dce6;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
 @media(max-width:560px){.geta-welcome-banner{padding:30px 16px;margin-bottom:16px}.geta-welcome-banner:before,.geta-welcome-banner:after{inset:7px}.geta-welcome-banner h2{font-size:clamp(27px,8vw,40px)}.geta-welcome-break{display:none}.geta-welcome-sub{font-size:9px;letter-spacing:.1em;line-height:1.7}}
 </style>
+
+<style id="geta-welcome-full-bleed-blue">
+/* Let the welcome panel fill the entire viewport width, removing the cream gutters. */
+.geta-welcome-banner{
+  box-sizing:border-box!important;
+  width:100vw!important;
+  max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:calc(50% - 50vw)!important;
+  margin-top:0!important;
+  margin-bottom:22px!important;
+  border-radius:0!important;
+  border-left:0!important;
+  border-right:0!important;
+  box-shadow:none!important;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(196,158,86,.16),transparent 58%),
+    linear-gradient(120deg,#07152d,#10264b 52%,#07152d)!important;
+}
+.geta-welcome-banner:before,.geta-welcome-banner:after{
+  inset:10px!important;
+  border-color:rgba(198,163,99,.28)!important;
+}
+@media(max-width:560px){
+  .geta-welcome-banner{margin-bottom:16px!important}
+  .geta-welcome-banner:before,.geta-welcome-banner:after{inset:8px!important}
+}
+</style>
+
 </body></html>
 
 <style id="geta-v3-finishing">
