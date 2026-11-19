@@ -1036,3 +1036,42 @@ main:has(> .geta-welcome-banner){
  .geta-fly-ball{display:none!important}
 }
 </style>
+
+
+<style id="geta-realistic-diagonal-tennis-balls">
+.geta-fly-ball{
+  position:absolute!important;z-index:4!important;
+  left:12%!important;top:-14%!important;
+  width:34px!important;height:34px!important;
+  display:block!important;border:0!important;border-radius:50%!important;
+  background:url('GETA_Tennis_Ball.png') center/contain no-repeat!important;
+  box-shadow:none!important;opacity:0!important;
+  pointer-events:none!important;
+}
+.geta-fly-ball:after{
+  content:""!important;position:absolute!important;
+  width:74px!important;height:2px!important;
+  left:-59px!important;top:5px!important;
+  border:0!important;border-radius:99px!important;
+  background:linear-gradient(90deg,transparent,rgba(220,239,116,.08) 24%,rgba(220,239,116,.58) 100%)!important;
+  transform:rotate(55deg)!important;transform-origin:right center!important;
+  filter:blur(.35px)!important;
+}
+.ball-one{--dx:25vw;--dy:35.7vw;top:-15%!important;left:12%!important;animation:getaBallFall 6.4s ease-in 2.1s infinite!important}
+.ball-two{--dx:21vw;--dy:30vw;top:-18%!important;left:47%!important;width:27px!important;height:27px!important;animation:getaBallFall 7.1s ease-in 5.4s infinite!important}
+.ball-three{--dx:23vw;--dy:32.9vw;top:-12%!important;left:76%!important;width:23px!important;height:23px!important;animation:getaBallFall 6.8s ease-in 9.2s infinite!important}
+@keyframes getaBallFall{
+  0%{opacity:0;transform:translate(0,0) rotate(0deg)}
+  8%{opacity:.96}
+  82%{opacity:.92}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(210deg)}
+}
+@media(max-width:560px){
+ .geta-fly-ball{width:25px!important;height:25px!important;top:-8%!important}
+ .ball-one{--dx:22vw;--dy:31.4vw}
+ .ball-two{--dx:19vw;--dy:27.1vw;width:21px!important;height:21px!important}
+ .ball-three{--dx:20vw;--dy:28.6vw;width:18px!important;height:18px!important}
+ .geta-fly-ball:after{width:52px!important;left:-43px!important;top:4px!important}
+}
+@media(prefers-reduced-motion:reduce){.geta-fly-ball{display:none!important}}
+</style>
