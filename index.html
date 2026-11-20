@@ -476,7 +476,7 @@ async function syncPublicEvents(){try{const {data,error}=await getaSupabase.from
 function nav(){const t=location.hash.slice(1)||'home';state.tab=t;
  $('#nav').innerHTML=[['home','Home'],['events','Events & tournaments'],['gallery','Gallery'],['account',me?'Member area':'Member sign in']].map(([k,l])=>`<a href="#${k}" class="${t===k?'on':''}">${l}</a>`).join('');
  ({home,events:eventsPage,gallery:galleryPage,account,'match-history':matchHistoryPage,manager}[t]||home)();window.scrollTo(0,0)}
-function home(){$('#app').innerHTML=`<section class="geta-welcome-banner" aria-label="Welcome to Gauteng Ekurhuleni Tennis Association"><div class="geta-welcome-intro">WELCOME TO</div><h2 class="geta-welcome-title">GAUTENG EKURHULENI<br> TENNIS ASSOCIATION</h2><span class="geta-fly-ball ball-one" aria-hidden="true"></span><span class="geta-fly-ball ball-two" aria-hidden="true"></span><span class="geta-fly-ball ball-three" aria-hidden="true"></span></section><div class="bleed"><div class="hero2"><div><p class="eyebrow">GAUTENG EKURHULENI TENNIS ASSOCIATION</p><h1>Where the love of tennis brings us together.</h1><p>Discover the courts, follow club events and keep your tennis journey together in one place.</p><a class="btn sun" href="#events">Explore events</a> <a class="btn alt" href="#account">${me?'My games':'Member sign in'}</a></div></div></div>
+function home(){$('#app').innerHTML=`<section class="geta-welcome-banner" aria-label="Welcome to Gauteng Ekurhuleni Tennis Association"><div class="geta-galaxy-stars" aria-hidden="true"></div><div class="geta-welcome-intro">WELCOME TO</div><h2 class="geta-welcome-title">GAUTENG EKURHULENI<br> TENNIS ASSOCIATION</h2><span class="geta-fly-ball flight-1" aria-hidden="true"></span><span class="geta-fly-ball flight-2" aria-hidden="true"></span><span class="geta-fly-ball flight-3" aria-hidden="true"></span><span class="geta-fly-ball flight-4" aria-hidden="true"></span><span class="geta-fly-ball flight-5" aria-hidden="true"></span><span class="geta-fly-ball flight-6" aria-hidden="true"></span><span class="geta-fly-ball flight-7" aria-hidden="true"></span><span class="geta-fly-ball flight-8" aria-hidden="true"></span><span class="geta-fly-ball flight-9" aria-hidden="true"></span><span class="geta-fly-ball flight-10" aria-hidden="true"></span><span class="geta-fly-ball flight-11" aria-hidden="true"></span><span class="geta-fly-ball flight-12" aria-hidden="true"></span></section><div class="bleed"><div class="hero2"><div><p class="eyebrow">GAUTENG EKURHULENI TENNIS ASSOCIATION</p><h1>Where the love of tennis brings us together.</h1><p>Discover the courts, follow club events and keep your tennis journey together in one place.</p><a class="btn sun" href="#events">Explore events</a> <a class="btn alt" href="#account">${me?'My games':'Member sign in'}</a></div></div></div>
 <div class="strip"><div><b>16 tennis courts</b><span class="mut">A place to play, compete and connect.</span></div><div><b>Club events & tournaments</b><span class="mut">Stay up to date with what is happening.</span></div><div><b>Your tennis journey</b><span class="mut">Scores, partners and match history in one place.</span></div></div><section class="card" id="fc" aria-live="polite" aria-label="Local weather forecast" style="margin:22px 0"></section><h2>The courts</h2><div class="grid"><div class="pc a"><div><h3>Open skies</h3><p>Hard courts framed by trees and a view over the grounds.</p></div></div><div class="pc b"><div><h3>Sunset sessions</h3><p>Play into the evening under the lights.</p></div></div><div class="pc c"><div><h3>Made for every player</h3><p>From social games to competitive tennis.</p></div></div></div>
 <section class="geta-home-events">${eventLoadNotice()}<div class="row" style="align-items:end;justify-content:space-between"><div><p class="eyebrow">ON THE CALENDAR</p><h2>Upcoming events & tournaments</h2></div><a class="text-link" href="#events">View all events</a></div>${(events||[]).filter(e=>!e.date||e.date>=todayStr()).sort((a,b)=>(a.date||'').localeCompare(b.date||'')).slice(0,3).map(e=>`<article class="geta-home-event"><div class="event-date">${e.date?new Date(e.date+'T12:00').toLocaleDateString('en-ZA',{day:'numeric',month:'short'}):'Soon'}</div><div><b>${esc(e.title)}</b><div class="mut">${esc(e.type||'GETA event')}${e.time?' · '+esc(e.time):''}</div><p>${esc(e.description||'More details coming soon.')}</p></div></article>`).join('')||'<p class="mut">New tournaments and club events will appear here as they are announced.</p>'}</section>
 `;loadForecast();getaDistrictHub()}
@@ -985,63 +985,74 @@ main:has(> .geta-welcome-banner){
 }
 .geta-welcome-banner:before,.geta-welcome-banner:after{display:none!important;content:none!important}
 .geta-welcome-banner .geta-welcome-rule,.geta-welcome-banner .geta-welcome-kicker,.geta-welcome-banner .geta-welcome-sub{display:none!important}
+.geta-galaxy-stars{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;opacity:.95}
+.geta-galaxy-stars:before,.geta-galaxy-stars:after{content:"";position:absolute;inset:-5%;pointer-events:none}
+.geta-galaxy-stars:before{
+  background-image:
+   radial-gradient(1px 1px at 4% 13%,#fff 98%,transparent),radial-gradient(1.5px 1.5px at 11% 72%,#dff5ff 98%,transparent),radial-gradient(1px 1px at 18% 34%,#fff 98%,transparent),radial-gradient(2px 2px at 25% 84%,#d9edff 98%,transparent),radial-gradient(1px 1px at 32% 19%,#fff 98%,transparent),radial-gradient(1.5px 1.5px at 39% 61%,#fff 98%,transparent),radial-gradient(1px 1px at 47% 9%,#dff5ff 98%,transparent),radial-gradient(2px 2px at 54% 78%,#fff 98%,transparent),radial-gradient(1px 1px at 62% 31%,#fff 98%,transparent),radial-gradient(1.5px 1.5px at 69% 88%,#dff5ff 98%,transparent),radial-gradient(1px 1px at 76% 15%,#fff 98%,transparent),radial-gradient(2px 2px at 83% 57%,#fff 98%,transparent),radial-gradient(1px 1px at 91% 27%,#dff5ff 98%,transparent),radial-gradient(1px 1px at 96% 76%,#fff 98%,transparent);
+  animation:getaStarTwinkle 3.8s ease-in-out infinite alternate;
+}
+.geta-galaxy-stars:after{
+  background-image:radial-gradient(1px 1px at 7% 48%,#fff 98%,transparent),radial-gradient(2px 2px at 15% 8%,#c9e8ff 98%,transparent),radial-gradient(1px 1px at 22% 62%,#fff 98%,transparent),radial-gradient(1px 1px at 29% 42%,#fff 98%,transparent),radial-gradient(2px 2px at 36% 92%,#d9efff 98%,transparent),radial-gradient(1px 1px at 44% 29%,#fff 98%,transparent),radial-gradient(1px 1px at 51% 53%,#fff 98%,transparent),radial-gradient(2px 2px at 59% 12%,#d9efff 98%,transparent),radial-gradient(1px 1px at 66% 69%,#fff 98%,transparent),radial-gradient(1px 1px at 73% 39%,#fff 98%,transparent),radial-gradient(2px 2px at 80% 94%,#d9efff 98%,transparent),radial-gradient(1px 1px at 88% 8%,#fff 98%,transparent),radial-gradient(1px 1px at 94% 49%,#fff 98%,transparent);
+  animation:getaStarTwinkle 5.2s ease-in-out -2.1s infinite alternate-reverse;filter:drop-shadow(0 0 3px #b9e7ff);
+}
+@keyframes getaStarTwinkle{0%{opacity:.25;transform:scale(.995)}45%{opacity:1}100%{opacity:.55;transform:scale(1.012)}}
 .geta-welcome-intro{
   position:relative;z-index:2;color:#f8f5ec;
   font-family:inherit;font-size:clamp(24px,4.5vw,48px);font-weight:800;
   letter-spacing:.13em;line-height:1.2;text-align:center;
-  opacity:0;animation:getaWelcomeIntro 3.6s ease-in-out forwards;
+  opacity:0;animation:getaWelcomeIntro 1.25s ease-out .2s forwards;
 }
 .geta-welcome-title{
   position:relative;z-index:2;max-width:1000px;margin:0!important;
   color:#f8f5ec!important;font-family:"Barlow Condensed","Arial Narrow",sans-serif!important;
   font-size:clamp(30px,5.7vw,64px)!important;font-weight:800!important;
   letter-spacing:.045em!important;line-height:1.12!important;text-align:center!important;
-  opacity:0;animation:getaWelcomeTitle 1.2s ease-out 3.7s forwards;
+  opacity:0;animation:getaWelcomeTitle 1.3s ease-out 1.8s forwards;
   text-shadow:0 2px 14px rgba(0,0,0,.18);
 }
-@keyframes getaWelcomeIntro{
-  0%{opacity:0;transform:translateY(10px)}
-  18%,62%{opacity:1;transform:translateY(0)}
-  100%{opacity:0;transform:translateY(-8px);visibility:hidden}
-}
-@keyframes getaWelcomeTitle{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:translateY(0)}
-}
+@keyframes getaWelcomeIntro{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes getaWelcomeTitle{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .geta-fly-ball{
-  position:absolute;z-index:3;left:-24px;top:25%;width:9px;height:9px;border-radius:50%;
-  background:radial-gradient(circle at 32% 28%,#f3ff9b 0 18%,#c6df55 42%,#8ba52e 100%);
-  box-shadow:0 0 7px rgba(222,245,115,.55);opacity:0;pointer-events:none;
+  position:absolute;z-index:3;left:var(--start-x);top:var(--start-y);width:var(--ball-size,9px);height:var(--ball-size,9px);
+  border-radius:50%;background:radial-gradient(circle at 32% 28%,#f7ffb2 0 16%,#d6ef65 40%,#91ad32 100%);
+  box-shadow:0 0 7px rgba(222,245,115,.7),0 0 15px rgba(205,238,105,.24);
+  opacity:0;pointer-events:none;animation:getaBallFlight var(--duration,3.6s) linear var(--delay,0s) infinite;
 }
 .geta-fly-ball:before{
-  content:"";position:absolute;width:34px;height:1.5px;right:5px;top:50%;
-  background:linear-gradient(90deg,transparent,rgba(220,245,130,.08),rgba(230,250,160,.48));
-  transform:translateY(-50%) rotate(-55deg);transform-origin:right center;
-  filter:blur(.35px);border-radius:50%;
+  content:"";position:absolute;width:var(--trail,52px);height:2px;right:5px;top:50%;
+  background:linear-gradient(90deg,transparent,rgba(220,245,130,.12),rgba(230,250,160,.75));
+  transform:translateY(-50%) rotate(var(--trail-angle,-35deg));transform-origin:right center;
+  filter:blur(.45px);border-radius:50%;box-shadow:0 0 5px rgba(218,245,139,.35);
 }
-.geta-fly-ball:after{
-  content:"";position:absolute;inset:1px;border:1px solid rgba(255,255,225,.75);
-  border-left-color:transparent;border-right-color:transparent;border-radius:50%;transform:rotate(35deg);
-}
-.ball-one{top:12%;animation:getaBallFlight 5.8s linear 1.8s infinite}
-.ball-two{top:48%;width:7px;height:7px;animation:getaBallFlight 7.2s linear 5.1s infinite}
-.ball-three{top:28%;width:6px;height:6px;animation:getaBallFlight 6.4s linear 9.4s infinite}
+.geta-fly-ball:after{content:"";position:absolute;inset:1px;border:1px solid rgba(255,255,225,.85);border-left-color:transparent;border-right-color:transparent;border-radius:50%;transform:rotate(35deg)}
 @keyframes getaBallFlight{
-  0%{left:-3%;top:var(--ball-start,20%);opacity:0;transform:translate(0,0) rotate(0)}
-  8%{opacity:.82}
-  88%{opacity:.78}
-  100%{left:32%;top:calc(var(--ball-start,20%) + 160%);opacity:0;transform:translate(0,0) rotate(540deg)}
+  0%{opacity:0;transform:translate3d(0,0,0) rotate(0deg)}
+  7%{opacity:.95}
+  82%{opacity:.9}
+  100%{opacity:0;transform:translate3d(var(--travel-x),var(--travel-y),0) rotate(720deg)}
 }
-.ball-one{--ball-start:0%}.ball-two{--ball-start:8%}.ball-three{--ball-start:3%}
+.flight-1{--start-x:-8%;--start-y:9%;--travel-x:120vw;--travel-y:52vh;--duration:3.5s;--delay:-1.2s;--trail-angle:-28deg}
+.flight-2{--start-x:18%;--start-y:102%;--travel-x:92vw;--travel-y:-62vh;--duration:3.1s;--delay:-2.4s;--ball-size:7px;--trail-angle:28deg}
+.flight-3{--start-x:48%;--start-y:-8%;--travel-x:65vw;--travel-y:58vh;--duration:3.8s;--delay:-.7s;--ball-size:8px;--trail-angle:-32deg}
+.flight-4{--start-x:108%;--start-y:22%;--travel-x:-120vw;--travel-y:48vh;--duration:3.3s;--delay:-2.8s;--ball-size:6px;--trail-angle:35deg}
+.flight-5{--start-x:74%;--start-y:108%;--travel-x:-75vw;--travel-y:-68vh;--duration:3.6s;--delay:-1.8s;--trail-angle:30deg}
+.flight-6{--start-x:-6%;--start-y:78%;--travel-x:118vw;--travel-y:-52vh;--duration:3.2s;--delay:-.4s;--ball-size:7px;--trail-angle:-30deg}
+.flight-7{--start-x:34%;--start-y:-10%;--travel-x:88vw;--travel-y:70vh;--duration:4s;--delay:-3.1s;--ball-size:6px;--trail-angle:-25deg}
+.flight-8{--start-x:105%;--start-y:82%;--travel-x:-116vw;--travel-y:-58vh;--duration:3.4s;--delay:-1.5s;--trail-angle:32deg}
+.flight-9{--start-x:5%;--start-y:45%;--travel-x:105vw;--travel-y:18vh;--duration:3.7s;--delay:-2.1s;--ball-size:8px;--trail-angle:-8deg}
+.flight-10{--start-x:90%;--start-y:-8%;--travel-x:-88vw;--travel-y:72vh;--duration:3.25s;--delay:-.9s;--ball-size:7px;--trail-angle:38deg}
+.flight-11{--start-x:58%;--start-y:108%;--travel-x:38vw;--travel-y:-72vh;--duration:3.9s;--delay:-2.6s;--ball-size:6px;--trail-angle:24deg}
+.flight-12{--start-x:108%;--start-y:48%;--travel-x:-122vw;--travel-y:12vh;--duration:3.05s;--delay:-1.1s;--ball-size:8px;--trail-angle:0deg}
 @media(max-width:560px){
  .geta-welcome-banner{min-height:245px!important;padding:48px 18px!important;background-size:cover!important;margin-bottom:16px!important}
  .geta-welcome-title{font-size:clamp(28px,8vw,40px)!important;letter-spacing:.025em!important}
  .geta-welcome-intro{font-size:clamp(23px,7vw,32px);letter-spacing:.1em}
- .geta-fly-ball{width:7px;height:7px}
+ .geta-fly-ball:before{width:30px}
 }
 @media(prefers-reduced-motion:reduce){
- .geta-welcome-intro{display:none!important}
- .geta-welcome-title{opacity:1!important;animation:none!important}
+ .geta-welcome-intro,.geta-welcome-title{opacity:1!important;animation:none!important;transform:none!important}
  .geta-fly-ball{display:none!important}
+ .geta-galaxy-stars:before,.geta-galaxy-stars:after{animation:none!important;opacity:.8}
 }
 </style>
